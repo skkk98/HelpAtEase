@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>HAE</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!--<link rel="stylesheet" type="text/css" href="home.css">-->
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+<body>
+
+     <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="">HAE</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="">About</a></li>
+        <li><a href="">Contact</a></li>
+
+        </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{% url 'register' %}"><i class="fa fa-user-plus" aria-hidden="true"></i>
+        Sign Up</a></li>
+        <li><a href=""><i class="fa fa-user" aria-hidden="true"></i>
+        Log In</a></li>
+
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+     <div class="container">
+     	<div class="row">
+     		<div class="col-lg-12">
+     			<div id="content">
+     			  <h1>Help At Ease</h1>
+     			  <h3>This is the place where you can do wonders</h3>
+     			  <hr>
+     			  <button class="btn btn-default btn-lg"><i class="fa fa-angle-double-right" aria-hidden= "true"></i>
+                   Get Started <a href=""></a></button>
+     		    </div>
+     		</div>
+     	</div>
+     </div>
+
+     <!-- ================================================================================================== -->
+
+   <!--<div class="foot">
+     <div class="col-lg-6">
+      <div id="footer">
+      <ul>
+        <a href="">How It Works</a><br>
+        <a href="">Contact Us</a><br>
+        <a href="">Frequently Asked Questions</a><br>
+
+      </ul>
+     </div>
+     </div>
+     <div class="col-lg-6">
+     <div id="footer2">
+      <ul>
+        <a href="">Terms of service</a><br>
+        <a href="">Privacy Policy</a><br>
+        <a href="">My Account</a><br>
+
+      </ul>
+     </div>
+     </div>
+     <div class="col-lg-12">
+      <div class="socialMediaButtons">
+        <a href="">
+          <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-facebook fa-stack-1x fa-inverse"></i></span>
+        </a>
+        <a href="">
+          <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-twitter fa-stack-1x fa-inverse"></i></span>
+        </a>
+        <a href="">
+          <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-instagram fa-stack-1x fa-inverse"></i></span>
+        </a>
+
+      </div>
+
+     </div>
+    </div>-->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
+<style type="text/css">
+  html{
+  background-color: #f3f3f3;
+  background: url("http://www.powerpointstemplate.com/wp-content/uploads/2017/10/download-free-ppt-blue-wavy-ppt-backgrounds-template-for-presentation-ppt-backgrounds-7.jpg") !important;
+  background-size: contain;
+  background-position: center;
+  background: no-repeat;
+}
+body{
+  background: url("http://www.powerpointstemplate.com/wp-content/uploads/2017/10/download-free-ppt-blue-wavy-ppt-backgrounds-template-for-presentation-ppt-backgrounds-7.jpg") !important;
+  background-color: #f3f3f3;
+  background-size: contain;
+  background-position: center;
+  background: no-repeat;
+  font-family: lato;
+}
+#content{
+  text-align: center;
+  padding-top: 25%;
+}
+html{
+  height: 100%;
+}
+h1{
+
+  font-weight: 700;
+  font-size: 5em;
+  /*color: #bce1bb;*/
+  color: black;
+  text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+               0px 8px 13px rgba(0,0,0,0.1),
+               0px 12px 20px rgba(0,0,0,0.1);
+}
+h3{
+
+  color: black;
+}
+hr{
+  width: 1000px;
+  border-top: 1px solid /*#f8f8f8*/ black;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+/*a{
+  font-family: Raleway;
+  font-weight: 700;
+}*/
+
+.footer{
+  margin-top: 200px;
+  margin-left: 100px;
+  text-align: center;
+}
+#footer2{
+  float: right;
+  margin-top: 200px;
+  margin-right: 100px;
+  font-size: 1.5em;
+}
+.socialMediaButtons{
+  margin-top: 50px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+
+
+</style>
