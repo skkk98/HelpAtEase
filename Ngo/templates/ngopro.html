@@ -1,0 +1,4 @@
+{% csrf_token %}
+{{ user.username }} i see that you are NGO<br>
+go ahead add an event<br>
+<a href="{% url 'Ngo:addevent' %}" style="color: green"><strong>+</strong>Add</a>

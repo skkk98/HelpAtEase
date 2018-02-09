@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView,View
-from .forms import RegisterForm
-from django.http import HttpResponse
+from django.views.generic import TemplateView, View
+from .forms import RegisterForm, LoginForm
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from .models import Type
@@ -36,4 +36,27 @@ class Register(View):
             logout(request)
             return HttpResponse('successfully registered')
 
+        return render(request, self.template_name, {'form': form})
+
+class Login(View):
+    form_class = LoginForm
+    template_name = 'login.html'
+    def get(self, request):
+        form = self.form_class(None)
+
+        return render(request, self.template_name, {'form': form})
+    def post(self, request):
+        form =self.form_class(request.POST)
+
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            registeras = form.cleaned_data['RegisterAs']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                if Type.objects.filter(user=request.user, RegisterAs=registeras).exists():
+                    return HttpResponseRedirect('/'+registeras.lower()+'/profile')
+            else:
+                return HttpResponse('<a href=""><strong>Click Here</strong></a> <a>to try again!</a>')
         return render(request, self.template_name, {'form': form})

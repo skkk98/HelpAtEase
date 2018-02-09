@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'marketing',
     'Volunteer',
     'crispy_forms',
+    'Ngo'
+
 
 ]
 

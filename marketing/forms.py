@@ -16,3 +16,16 @@ class RegisterForm(forms.Form):
     class Meta:
         model = User, Type
         fields = ['username', 'email', 'password', 'confirm_password', 'RegisterAs']
+
+class LoginForm(forms.Form):
+    CHOICES = (
+        ('Volunteer', 'VOLUNTEER'),
+        ('Ngo', 'NGO'),
+        ('Funder', 'FUNDER'),
+    )
+    username = forms.CharField(max_length=50)
+    password = forms.CharField(widget=forms.PasswordInput)
+    RegisterAs = forms.CharField(widget=forms.Select(choices=CHOICES))
+    class Meta:
+        model = User, Type
+        fields = ['username', 'password', 'RegisterAs']

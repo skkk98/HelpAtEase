@@ -1,0 +1,18 @@
+
+{% load crispy_forms_tags %}
+<form class="alb" action="" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+    <div>
+        <div>
+            <span>{{ field.errors }}</span>
+        </div>
+    <label class="labels" style="text-align: center">{{ field.label_tag }}</label>
+    <div class="fields">
+        {{ field }}
+    </div>
+    </div>
+    {% endfor %}
+    <div class="text-center"><button type="submit" class="input-btn">Add Event</button></div>
+
+</form>

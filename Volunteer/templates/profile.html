@@ -1,0 +1,49 @@
+{% csrf_token %}
+<style>
+    body {background:#ccc}
+    .box {
+	width:70%;
+	height:200px;
+	background:#FFF;
+	margin:40px auto;
+    padding: 5px;
+
+}
+    .effect1{
+	-webkit-box-shadow: 0 10px 6px -6px #777;
+	   -moz-box-shadow: 0 10px 6px -6px #777;
+	        box-shadow: 0 10px 6px -6px #777;
+}
+    /*.box h3{
+  text-align:center;
+	position:relative;
+	top:80px;}*/
+    .img{
+        width: 55%;
+        size: 80px;
+    }
+    img{
+        float: left;
+        width: 40%;
+
+    }
+    .bottom{
+        padding-top: 55px;
+    }
+</style>
+{{ user.username }} NGO ke events dikhana hai
+
+<div class="box effect1">
+    <div class="img">
+        <img src="https://thumb9.shutterstock.com/display_pic_with_logo/123700/137161958/stock-photo-beautiful-alpine-scenery-crystal-lake-koenigsee-with-small-church-137161958.jpg" alt="oh no">
+
+    </div>
+
+    <h3 style="padding-left: 190px">TITLE</h3>
+    <p style="padding-left: 190px">Description</p>
+    <div class="bottom" style="padding-left: 190px">
+     <h5 style="float: left">place</h5>
+    <h5 style="float: right">user - contact</h5>
+    </div>
+
+</div>
