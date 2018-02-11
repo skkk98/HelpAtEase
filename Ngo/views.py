@@ -42,7 +42,7 @@ def add_event(request):
         place = request.POST['place']
         description = request.POST['description']
         contact = request.POST['contact']
-        image = request.FILES['image']
+
 
         event = Event()
         event.user = request.user
@@ -50,7 +50,7 @@ def add_event(request):
         event.place = place
         event.description = description
         event.contact = contact
-        event.image = image
+
 
         event.save()
         return HttpResponse('your event has been saved')

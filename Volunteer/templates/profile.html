@@ -1,6 +1,6 @@
 {% csrf_token %}
 <style>
-    body {background:#ccc}
+    body {background-color:#ccc}
     .box {
 	width:70%;
 	height:200px;
@@ -30,8 +30,15 @@
     .bottom{
         padding-top: 55px;
     }
+    a{
+        float: right;
+    }
 </style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<body>
 {{ user.username }} NGO ke events dikhana hai
+
+{% for event in all_events%}
 
 <div class="box effect1">
     <div class="img">
@@ -39,11 +46,17 @@
 
     </div>
 
-    <h3 style="padding-left: 190px">TITLE</h3>
-    <p style="padding-left: 190px">Description</p>
+    <h3 style="padding-left: 190px">{{ event.title }}</h3>
+    <p style="padding-left: 190px">{{ event.description }}</p>
+    <a href="#" class="btn btn-info btn-sm">
+          <span class="glyphicon glyphicon-trash"></span> Delete
+        </a>
     <div class="bottom" style="padding-left: 190px">
-     <h5 style="float: left">place</h5>
-    <h5 style="float: right">user - contact</h5>
+     <h5 style="float: left">{{ event.place }}</h5>
+    <h5 style="float: right">{{ event.user }} - {{ event.contact }}</h5>
     </div>
 
 </div>
+
+{% endfor %}
+</body>
