@@ -1,11 +1,25 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, View
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from .forms import EventForm
 from .models import Event
+from django.core.urlresolvers import reverse_lazy
 # Create your views here.
-class ngopro(TemplateView):
+def ngopro(request):
+    events_fil = Event.objects.filter(user=request.user)
     template_name = 'ngopro.html'
+    return render(request, template_name, {'events_fil': events_fil})
+
+def event_del(request, event_id):
+    try:
+        event = Event.objects.get(id=int(event_id))
+        event.delete()
+    except Exception as e:
+        print(e)
+        return redirect('/ngo/profile')
+    return HttpResponseRedirect('ngo/profile')
+
+
 
 """class add_event(View):
     form_class = EventForm
