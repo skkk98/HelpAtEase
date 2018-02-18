@@ -12,12 +12,12 @@ def ngopro(request):
 
 def event_del(request, event_id):
     try:
-        event = Event.objects.get(id=int(event_id))
+        event = Event.objects.filter(id=int(event_id))
         event.delete()
     except Exception as e:
         print(e)
-        return redirect('/ngo/profile')
-    return HttpResponseRedirect('ngo/profile')
+        return redirect('ngo/profile')
+    return HttpResponseRedirect('/ngo/profile')
 
 
 
