@@ -1,4 +1,5 @@
 {% csrf_token %}
+{% load staticfiles %}
 <style>
     body {background-color:#ccc}
     .box {
@@ -27,14 +28,16 @@
         width: 40%;
 
     }
-    .bottom{
+    #bottom{
         padding-top: 55px;
     }
-    a{
+    button{
         float: right;
     }
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script type="text/javascript" src="{% static 'volscript.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <body>
 {{ user.username }} NGO ke events dikhana hai
 
@@ -48,15 +51,15 @@
 
     <h3 style="padding-left: 190px">{{ event.title }}</h3>
     <p style="padding-left: 190px">{{ event.description }}</p>
-    <a href="#" class="btn btn-success btn-sm">
-          <span class="glyphicon glyphicon-ok"></span> Register
-        </a>
-    <div class="bottom" style="padding-left: 190px">
+    <button onclick="awesome()" id="but" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok"></span> Register
+        </button>
+    <div id="bottom" style="padding-left: 190px">
      <h5 style="float: left">{{ event.place }}</h5>
     <h5 style="float: right">{{ event.user }} - {{ event.contact }}</h5>
-    </div>
+    ohmy</div>
 
 </div>
 
 {% endfor %}
 </body>
+
