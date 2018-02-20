@@ -1,5 +1,4 @@
 {% csrf_token %}
-{% load staticfiles %}
 <style>
     body {background-color:#ccc}
     .box {
@@ -34,19 +33,14 @@
     a{
         float: right;
     }
-    #oh{
-        float: left;
-    }
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script type="text/javascript" src="{% static 'volscript.js' %}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <body>
-{{ user.username }} NGO ke events dikhana hai<br>
-<a id="oh" href="{% url 'Vol:registered-events' %}"><strong>Registered Events</strong></a>
-{% for event in all_events%}
+hey {{ user.username }}<br>
+Here are your Registered Events<br>
 
-<div class="box effect1">
+{% for event in events %}
+    <div class="box effect1">
     <div class="img">
         <img src="https://thumb9.shutterstock.com/display_pic_with_logo/123700/137161958/stock-photo-beautiful-alpine-scenery-crystal-lake-koenigsee-with-small-church-137161958.jpg" alt="oh no">
 
@@ -54,14 +48,12 @@
 
     <h3 style="padding-left: 190px">{{ event.title }}</h3>
     <p style="padding-left: 190px">{{ event.description }}</p>
-    <a href="{% url 'Vol:event-register' event.id %}" onclick="" id="but" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok"></span> Register
-        </a>
     <div id="bottom" style="padding-left: 190px">
      <h5 style="float: left">{{ event.place }}</h5>
     <h5 style="float: right">{{ event.user }} - {{ event.contact }}</h5>
     </div>
 
 </div>
-
 {% endfor %}
+
 </body>

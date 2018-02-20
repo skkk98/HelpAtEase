@@ -19,8 +19,6 @@ def event_del(request, event_id):
         return redirect('ngo/profile')
     return HttpResponseRedirect('/ngo/profile')
 
-
-
 """class add_event(View):
     form_class = EventForm
     template_name = 'add_event.html'
@@ -67,4 +65,4 @@ def add_event(request):
 
 
         event.save()
-        return HttpResponse('your event has been saved')
+        return HttpResponse('your event has been saved <strong><a href="/ngo/profile">Click here</a></strong>')
