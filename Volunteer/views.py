@@ -13,14 +13,17 @@ def profile(request):
     template_name = 'profile.html'
     return render(request, template_name, {'all_events': all_events})
 
-def event_reg(request, event_id):
-    user_id = request.user
-    if Regevent.objects.filter(user=user_id).exists():
-        finduser = Regevent.objects.get(user=user_id)
+def event_reg(request, event_id, user_id):
+    users = request.user
+    findevent = Event.objects.get(pk=event_id)
+    findevent.users += str(user_id) + '&'
+    findevent.save()
+    if Regevent.objects.filter(user=users).exists():
+        finduser = Regevent.objects.get(user=users)
         finduser.events += str(event_id) + '&'
         finduser.save()
     else:
-        regevent = Regevent(user=user_id, events=str(event_id) + '&')
+        regevent = Regevent(user=users, events=str(event_id) + '&')
         regevent.save()
     return HttpResponseRedirect('/volunteer/profile')
 

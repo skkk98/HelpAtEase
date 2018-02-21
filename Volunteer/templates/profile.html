@@ -54,7 +54,7 @@
 
     <h3 style="padding-left: 190px">{{ event.title }}</h3>
     <p style="padding-left: 190px">{{ event.description }}</p>
-    <a href="{% url 'Vol:event-register' event.id %}" onclick="" id="but" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok"></span> Register
+    <a href="{% url 'Vol:event-register' event.id user.id %}" onclick="" id="but" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok"></span> Register
         </a>
     <div id="bottom" style="padding-left: 190px">
      <h5 style="float: left">{{ event.place }}</h5>

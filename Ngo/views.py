@@ -3,6 +3,7 @@ from django.views.generic import TemplateView, View
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import EventForm
 from .models import Event
+from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse_lazy
 # Create your views here.
 def ngopro(request):
@@ -66,3 +67,12 @@ def add_event(request):
 
         event.save()
         return HttpResponse('your event has been saved <strong><a href="/ngo/profile">Click here</a></strong>')
+
+def event_full(request, event_id):
+    template_name = 'event_full.html'
+    event = Event.objects.get(id=int(event_id))
+    list_users = event.users.split('&')
+    list_users = list_users[:-1]
+    regd_users = User.objects.filter(id__in=list_users)
+    return render(request, template_name, {'regd_users': regd_users,
+                                           'event': event})

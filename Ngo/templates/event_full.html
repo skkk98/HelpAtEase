@@ -34,22 +34,13 @@
         float: right;
     }
 </style>
-{{ user.username }} i see that you are NGO<br>
-go ahead add an event<br>
-<a href="{% url 'Ngo:addevent' %}" style="color: green"><strong>+</strong>Add</a>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-{% if user.is_authenticated %}
-    {% for event in events_fil%}
 
 <div class="box effect1">
     <div class="img">
         <img src="https://thumb9.shutterstock.com/display_pic_with_logo/123700/137161958/stock-photo-beautiful-alpine-scenery-crystal-lake-koenigsee-with-small-church-137161958.jpg" alt="oh no">
 
     </div>
-    <a href="{% url 'Ngo:event-full' event.id %}">
     <h3 style="padding-left: 190px">{{ event.title }}</h3>
-    </a>
     <p style="padding-left: 190px">{{ event.description }}</p>
     <a id="oh" href="{% url 'Ngo:event-delete' event.id %}" class="btn btn-info btn-sm">
           <span class="glyphicon glyphicon-trash"></span> Delete
@@ -61,5 +52,21 @@ go ahead add an event<br>
 
 </div>
 
-{% endfor %}
-{% endif %}
+List of All the Registered Volunteers
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+<table border="1" class="table">
+		<tr>
+			<td scope="col">Username</td>
+			<td scope="col">Email</td>
+		</tr>
+        {% for user in regd_users %}
+		<tr>
+			<td>{{ user.username }}</td>
+			<td>{{ user.email }}</td>
+        </tr>
+        {% endfor %}
+</table>

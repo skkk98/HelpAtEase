@@ -9,5 +9,6 @@ class Event(models.Model):
     place = models.CharField(max_length=50, default='Raipur')
     #phone_regex = RegexValidator(regex=r'^\+?1?\d{9,12}$', message="Phone Number must be 9 to 12 digits")
     contact = models.IntegerField(max_length=10)
+    users = models.CharField(max_length=1000, blank=True)
     def __str__(self):
         return str(self.title)
