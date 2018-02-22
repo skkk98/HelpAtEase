@@ -27,6 +27,32 @@ def event_reg(request, event_id, user_id):
         regevent.save()
     return HttpResponseRedirect('/volunteer/profile')
 
+def event_unreg(request, event_id, user_id):
+    # remove user_id from event
+    users = request.user
+    findevent = Event.objects.get(pk=event_id)
+    oldstr = findevent.users
+    k = findevent.users.find(str(user_id))
+    print(k)
+    l = len(str(user_id))
+    newstr = oldstr[0:k] + oldstr[k+l+1:]
+    print(oldstr)
+    print(newstr)
+    findevent.users = newstr
+    findevent.save()
+    # remove event_id from user's
+    finduser = Regevent.objects.get(user=users)
+    old = finduser.events
+    p = finduser.events.find(str(event_id))
+    l1 = len(str(event_id))
+    new = old[0:p] + old[p+l1+1:]
+    finduser.events = new
+    print(p)
+    print(old)
+    print(new)
+    finduser.save()
+    return HttpResponseRedirect('/volunteer/profile/regevents')
+
 def regd_events(request):
     template_name = 'regd_events.html'
     user_id = request.user
