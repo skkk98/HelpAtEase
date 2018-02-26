@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
 class Event(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(null=True, blank=True)
+    image = models.FileField(null=True, blank=True)
     title = models.CharField(max_length=50)
     description = models.TextField(max_length=1000, default='No description')
     place = models.CharField(max_length=50, default='Raipur')

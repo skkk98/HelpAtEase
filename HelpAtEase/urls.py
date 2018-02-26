@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from marketing.views import HomePage, Register, Login
+from marketing.views import HomePage, Register, Login, Logout
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -23,5 +25,10 @@ urlpatterns = [
     url(r'^register/$', Register.as_view(), name='register'),
     url(r'^login/$',Login.as_view(), name='login'),
     url(r'^volunteer/', include('Volunteer.urls', namespace='Vol')),
-    url(r'^ngo/', include('Ngo.urls', namespace='Ngo'))
+    url(r'^ngo/', include('Ngo.urls', namespace='Ngo')),
+    url(r'^logout/$', Logout, name='logout')
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

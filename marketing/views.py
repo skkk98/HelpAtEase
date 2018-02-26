@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, View
 from .forms import RegisterForm, LoginForm
 from django.http import HttpResponse, HttpResponseRedirect
@@ -25,16 +25,16 @@ class Register(View):
             confirm_password = form.cleaned_data['confirm_password']
             username = form.cleaned_data['username']
             email = form.cleaned_data['email']
-            registeras = form.cleaned_data['RegisterAs']
+            registeras = form.cleaned_data['Register_As']
             user = User(username=username, email=email)
             user.set_password(password)
             user.save()
             login(request, user)
             user_id = request.user
-            reg = Type(user=user_id, RegisterAs=registeras)
+            reg = Type(user=user_id, Register_As=registeras)
             reg.save()
             logout(request)
-            return HttpResponse('successfully registered')
+            return HttpResponse('successfully registered <a href="/login"><strong>Click Here</strong></a><a>to Login</a>')
 
         return render(request, self.template_name, {'form': form})
 
@@ -51,12 +51,16 @@ class Login(View):
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            registeras = form.cleaned_data['RegisterAs']
+            registeras = form.cleaned_data['Register_As']
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                if Type.objects.filter(user=request.user, RegisterAs=registeras).exists():
+                if Type.objects.filter(user=request.user, Register_As=registeras).exists():
                     return HttpResponseRedirect('/'+registeras.lower()+'/profile')
             else:
                 return HttpResponse('<a href=""><strong>Click Here</strong></a> <a>to try again!</a>')
         return render(request, self.template_name, {'form': form})
+
+def Logout(request):
+    logout(request)
+    return redirect('/')

@@ -1,5 +1,7 @@
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+{% load staticfiles %}
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -16,20 +18,24 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="{% url 'home' %}">Home</a></li>
+        <li class=""><a href="{% url 'home' %}">Home</a></li>
         <li><a href="">About</a></li>
         <li><a href="">Contact</a></li>
 
         </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="{% url 'login' %}"><i class="fa fa-user" aria-hidden="true"></i>
-        Log In</a></li>
+          <li><a href="{% url 'Ngo:ngopro' %}"><i class="glyphicon glyphicon-th-list" aria-hidden="true"></i>
+        Events</a></li>
+          <li><a href="{% url 'logout' %}"><i class="fa fa-user" aria-hidden="true"></i>
+        Log Out</a></li>
+
 
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
 <style>
 input, select {
     width: 100%;
@@ -54,7 +60,7 @@ input:focus {
 
 }
 
-.btn {
+.input-btn {
     width: 100%;
     background-color: #4CAF50;
     color: white;
@@ -76,9 +82,9 @@ label {
 </style>
 <br><br><br>
 <div id="box" class="effect">
-<form class="alb" action="" method="post">
+<form method="post">
     {% csrf_token %}
-    {% for field in form %}
+    {% for field in event_form %}
     <div>
         <div>
             <span>{{ field.errors }}</span>
@@ -89,8 +95,6 @@ label {
     </div>
     </div>
     {% endfor %}
-    <div>
-        <button type="submit" class="btn">Register</button>
-    </div>
+    <div class="text-center"><button type="submit" class="input-btn">Add Event</button></div>
 </form>
 </div>

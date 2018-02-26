@@ -12,10 +12,10 @@ class RegisterForm(forms.Form):
     email = forms.EmailField(max_length=200, help_text='Required')
     password = forms.CharField(widget=forms.PasswordInput, min_length=8)
     confirm_password = forms.CharField(widget=forms.PasswordInput)
-    RegisterAs = forms.CharField(widget=forms.Select(choices=CHOICES))
+    Register_As = forms.CharField(widget=forms.Select(choices=CHOICES))
     class Meta:
         model = User, Type
-        fields = ['username', 'email', 'password', 'confirm_password', 'RegisterAs']
+        fields = ['username', 'email', 'password', 'confirm_password', 'Register_As']
 
 class LoginForm(forms.Form):
     CHOICES = (
@@ -25,7 +25,7 @@ class LoginForm(forms.Form):
     )
     username = forms.CharField(max_length=50)
     password = forms.CharField(widget=forms.PasswordInput)
-    RegisterAs = forms.CharField(widget=forms.Select(choices=CHOICES))
+    Register_As = forms.CharField(widget=forms.Select(choices=CHOICES))
     class Meta:
         model = User, Type
-        fields = ['username', 'password', 'RegisterAs']
+        fields = ['username', 'password', 'Register_As']

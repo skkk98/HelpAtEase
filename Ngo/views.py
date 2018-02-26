@@ -1,11 +1,29 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
 from django.views.generic import TemplateView, View
 from django.http import HttpResponse, HttpResponseRedirect
+from django.views.generic.edit import UpdateView
 from .forms import EventForm
 from .models import Event
 from django.contrib.auth.models import User
+from django.template import RequestContext
 from django.core.urlresolvers import reverse_lazy
 # Create your views here.
+def update_event(request, event_id):
+    event = Event.objects.get(id=event_id)
+    print(event)
+    event_form = EventForm(instance=event, initial={'title': event.title})
+    if request.method == 'POST':
+        event_form.save()
+        return redirect('/ngo/profile/')
+    return render(request, 'update_event.html', {'event_form': event_form,
+                                                 'event': event})
+
+class UpdateEvent(UpdateView):
+    template_name = 'update_event.html'
+    form_class = EventForm
+    model = Event
+
+
 def ngopro(request):
     events_fil = Event.objects.filter(user=request.user)
     template_name = 'ngopro.html'
@@ -55,10 +73,12 @@ def add_event(request):
         place = request.POST['place']
         description = request.POST['description']
         contact = request.POST['contact']
+        image = request.POST['image']
 
 
         event = Event()
         event.user = request.user
+        event.image = image
         event.title = title
         event.place = place
         event.description = description
