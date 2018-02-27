@@ -52,7 +52,7 @@ class Login(View):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             registeras = form.cleaned_data['Register_As']
-            user = authenticate(request, username=username, password=password)
+            user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
                 if Type.objects.filter(user=request.user, Register_As=registeras).exists():

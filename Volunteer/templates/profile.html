@@ -76,9 +76,10 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script type="text/javascript" src="{% static 'volscript.js' %}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<br><br><br>
 <body>
-{{ user.username }} NGO ke events dikhana hai<br>
-<a id="oh" href="{% url 'Vol:registered-events' %}"><strong>Registered Events</strong></a>
+Hey {{ user.username }}, You can register in one or more events to help the NGO organize the event<br>
+Click on registered events tab to check which events you have registered to.
 {% for event in all_events%}
 
 <div class="box effect1">

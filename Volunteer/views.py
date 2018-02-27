@@ -9,7 +9,12 @@ from .models import Regevent
 
 
 def profile(request):
-    all_events = Event.objects.all()
+    user_id = request.user
+    find_events = Regevent.objects.get(user=user_id)
+    list_events = find_events.events.split('&')
+    print(list_events)
+    list_events = list_events[:-1]
+    all_events = Event.objects.all().exclude(id__in=list_events)
     template_name = 'profile.html'
     return render(request, template_name, {'all_events': all_events})
 
